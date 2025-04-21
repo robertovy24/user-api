@@ -104,6 +104,16 @@ La clase `cl.example.config.JwtUtil` se encarga de:
 
 ---
 
+## 🔑 Acceso JWT
+El acceso al endpoint por swagger se entrega con la siguiente informacion 
+- Usuario: user
+- Password: se entrega en la consola, cuando se ejecuta el servidor de aplicaciones. ejemplo: 2d86d780-154f-43c1-be48-cb3327d93aad
+
+```
+Using generated security password: 2d86d780-154f-43c1-be48-cb3327d93aad
+```
+---
+
 ## 📄 Documentación Swagger
 
 - **Interfaz interactiva (Swagger UI):**  
