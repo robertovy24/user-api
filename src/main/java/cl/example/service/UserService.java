@@ -6,14 +6,12 @@ import cl.example.exception.EmailAlreadyExistsException;
 import cl.example.model.Phone;
 import cl.example.model.User;
 import cl.example.repository.UserRepository;
-import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,7 +60,7 @@ public class UserService {
                 .isActive(true)
                 .build();
 
-        final User savedUser = userRepository.save(user);
+         User savedUser = userRepository.save(user);
 
         if (request.getPhones() != null) {
             var phoneEntities = request.getPhones().stream()
@@ -75,18 +73,10 @@ public class UserService {
                     .collect(Collectors.toList());
             user.setPhones(phoneEntities);
             userRepository.save(user);
+            savedUser = userRepository.save(savedUser);
         }
 
-        return toResponse(user);
-    }
-
-   private String generateToken(String email) {
-        LocalDateTime now = LocalDateTime.now();
-        return Jwts.builder()
-                .setSubject(email)
-                .setId(UUID.randomUUID().toString())
-                .setIssuedAt(java.sql.Timestamp.valueOf(now))
-                .compact();
+        return toResponse(savedUser);
     }
 
     private UserResponse toResponse(User user) {

@@ -113,6 +113,14 @@ El acceso al endpoint por swagger se entrega con la siguiente informacion
 Using generated security password: 2d86d780-154f-43c1-be48-cb3327d93aad
 ```
 ---
+## 🔒 Autenticación
+Esta API utiliza **Basic Authentication**.  
+Para cada petición a endpoints protegidos, añade en la cabecera HTTP:
+```
+Ejemplo real**: si tu usuario es `Juan` y tu contraseña `password`, el header debe quedar así:
+Authorization: Basic am9objpwYXNzd29yZA==
+```
+---
 
 ## 📄 Documentación Swagger
 
